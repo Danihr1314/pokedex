@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PokemonCard from './PokemonCard';
+import image from '../assets/pokedex-title.png'
 
 const Pokedex = () => {
 
@@ -58,37 +59,38 @@ const Pokedex = () => {
 // -------------------------------------------------------------------------------
 
   return (
-    <div>
-      <h1>Pokedex</h1>
-      <p>Welcome {userName}!</p>
-      <div>
-        <input 
-          type="text" 
-          placeholder='Search pokemon'
-          onChange={e => setPokemonName(e.target.value)}
-        />
-        <button onClick={searchPokemon}>Search</button>
+    <div className='pokedex'>
+      <img id='image-title' src={image} alt="" />
+      <p id='welcome'><b style={{color:'#FE1936'}}>Welcome {userName},</b> here you can find your favourite pokemon</p>
+      <div className='inputs-pokedex'>
+        <div>
+          <input 
+            type="text" 
+            placeholder='Search pokemon'
+            onChange={e => setPokemonName(e.target.value)}
+          />
+          <button onClick={searchPokemon}>Search</button>
 
-        <select onChange={filterType} name="" id="">
-          {types.map((type)=>(
-            <option 
-              value={type.url} 
-              key={type.url}
-            >
-              {type.name}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div>
-        <input 
-          type="text" 
-          placeholder='Pokemons per page'
-          onChange={e=> setNumberOfPokemonsInPage(e.target.value)}
-        />
-        <button onClick={pokemonsPerPageGo}>Go</button>
-      </div>
-      
+          <select onChange={filterType} name="" id="">
+            {types.map((type)=>(
+              <option 
+                value={type.url} 
+                key={type.url}
+              >
+                {type.name}
+              </option>
+            ))}
+          </select>
+        </div>
+          <div>
+            <input 
+              type="text" 
+              placeholder='Pokemons per page'
+              onChange={e=> setNumberOfPokemonsInPage(e.target.value)}
+            />
+            <button onClick={pokemonsPerPageGo}>Go</button>
+          </div>
+        </div>
       <ul>
         {pokemonPaginated.map((pokemon)=>(
             <PokemonCard 
