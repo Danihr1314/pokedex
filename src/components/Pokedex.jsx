@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PokemonCard from './PokemonCard';
-import image from '../assets/pokedex-title.png'
+import image from '../assets/pokedex-title.png';
+import NavBar from './Nav';
 
 const Pokedex = () => {
 
@@ -34,9 +35,7 @@ const Pokedex = () => {
        .then(res => setPokemons(res.data.pokemon))
   }
 
-  //console.log(pokemons)
-
-// -----------------------------------Paginate----------------------------------
+// ----------------------Funcionalidad paginacion----------------------------------
 
   const [page, setPage] = useState(1);
   const [pokemonsPerPage, setPokemonsPerPage] = useState(20);
@@ -56,21 +55,22 @@ const Pokedex = () => {
     setPokemonsPerPage(Number(numberOfPokemonsInPage));
   }
 
-// -------------------------------------------------------------------------------
-
   return (
     <div className='pokedex'>
+      <NavBar/>
       <img id='image-title' src={image} alt="" />
-      <p id='welcome'><b style={{color:'#FE1936'}}>Welcome {userName},</b> here you can find your favourite pokemon</p>
+      <p id='welcome'>
+        <b style={{color:'#FE1936'}}>Welcome {userName},</b> here you can find your favourite pokemon
+      </p>
+{/*--------------------- Inputs ---------------------------------------------------------------------*/}
       <div className='inputs-pokedex'>
-        <div>
+        <div className='search-pokemon'>
           <input 
             type="text" 
             placeholder='Search pokemon'
             onChange={e => setPokemonName(e.target.value)}
           />
-          <button onClick={searchPokemon}>Search</button>
-
+          <button onClick={searchPokemon}><span></span>Search</button>
           <select onChange={filterType} name="" id="">
             {types.map((type)=>(
               <option 
@@ -82,17 +82,16 @@ const Pokedex = () => {
             ))}
           </select>
         </div>
-
-          <div>
-            <input 
-              type="text" 
-              placeholder='Pokemons per page'
-              onChange={e=> setNumberOfPokemonsInPage(e.target.value)}
-            />
-            <button onClick={pokemonsPerPageGo}>Go</button>
-          </div>
+        <div className='pokemons-page'>
+          <input 
+            type="text" 
+            placeholder='Pokemons per page'
+            onChange={e=> setNumberOfPokemonsInPage(e.target.value)}
+          />
+          <button onClick={pokemonsPerPageGo}><span></span>Go</button>
         </div>
-
+      </div>
+{/*---------------------------- Tarjetas ----------------------------------------*/}
       <ul>
         {pokemonPaginated.map((pokemon)=>(
             <PokemonCard 
@@ -100,12 +99,24 @@ const Pokedex = () => {
             url={pokemon.url ? pokemon.url : pokemon.pokemon.url}/>
         ))}
       </ul>
-
-      <button onClick={()=> setPage(page-1)} disabled={page === 1}>Prev</button>
-      {numbers.map(number=> (
-        <button key={number} onClick={()=> setPage(number)}>{number}</button>
-      ))}
-      <button onClick={()=> setPage(page+1)} disabled={page === totalPages}>Next</button>
+{/*-----------------------Paginacion ----------------------------*/}
+      <div className='pagination'>
+        <button 
+          className='prev'
+          onClick={()=> setPage(page-1)} 
+          disabled={page === 1}
+        >Prev
+        </button>
+        {numbers.map(number=> (
+          <button key={number} onClick={()=> setPage(number)}>{number}</button>
+        ))}
+        <button
+          className='next'
+          onClick={()=> setPage(page+1)} 
+          disabled={page === totalPages}
+        >Next
+        </button>
+      </div>
     </div>
   );
 };

@@ -39,18 +39,14 @@ const PokemonCard = ({url}) => {
         <div className='info'>
           <div>
             <h3 style={{fontSize:'25px'}}>{pokemon.name}</h3>
-            <h3 style={{fontSize:'14px'}}>{pokemon.types?.[0].type.name} {pokemon.types?.[1]?.type.name}</h3>
+            <h3 style={{fontSize:'14px'}}>{pokemon.types?.[0].type.name}  {pokemon.types?.[1]?.type.name}</h3>
             <p style={{fontSize:'10px'}}>Type</p>
           </div>
           <div className='info-char'>
             <p><b>HP: </b><span style={{color: getBorder()}}>{pokemon.stats?.[0].base_stat}</span></p> 
-            {/* <h3>{pokemon.stats?.[0].base_stat}</h3> */}
             <p><b>Attack: </b><span style={{color: getBorder()}}>{pokemon.stats?.[1].base_stat}</span></p>
-            {/* <h3>{pokemon.stats?.[1].base_stat}</h3> */}
             <p><b>Defense: </b><span style={{color: getBorder()}}>{pokemon.stats?.[2].base_stat}</span></p> 
-            {/* <h3>{pokemon.stats?.[2].base_stat}</h3> */}
             <p><b>Speed: </b><span style={{color: getBorder()}}>{pokemon.stats?.[5].base_stat}</span></p>
-            {/* <h3>{pokemon.stats?.[5].base_stat}</h3> */}
           </div>
         </div>
       </div>  
