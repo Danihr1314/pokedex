@@ -82,6 +82,7 @@ const Pokedex = () => {
             ))}
           </select>
         </div>
+
           <div>
             <input 
               type="text" 
@@ -91,6 +92,7 @@ const Pokedex = () => {
             <button onClick={pokemonsPerPageGo}>Go</button>
           </div>
         </div>
+
       <ul>
         {pokemonPaginated.map((pokemon)=>(
             <PokemonCard 
@@ -98,6 +100,7 @@ const Pokedex = () => {
             url={pokemon.url ? pokemon.url : pokemon.pokemon.url}/>
         ))}
       </ul>
+
       <button onClick={()=> setPage(page-1)} disabled={page === 1}>Prev</button>
       {numbers.map(number=> (
         <button key={number} onClick={()=> setPage(number)}>{number}</button>

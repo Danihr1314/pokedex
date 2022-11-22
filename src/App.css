@@ -86,9 +86,50 @@ line-height: 30px;
   margin-left: 40px;
 }
 
-
 /* ----------------------cards--------------------------- */
-.card{
-  border: 8px solid gray;
-} 
 
+.card{
+  height: 383px;
+  width: 261px;
+  left: 444px;
+  top: 1344px;
+  border-radius: 4px;
+  margin: 0 33px 72px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card img{
+  height: auto;
+  width: 159px;
+  margin-left: 50px;
+}
+
+.pokedex ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.info{
+  height:221px;
+  color: gray;
+  background-color: #ffffff;
+  font-size: 14px;
+  display: flex;
+  position: sticky;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.info div{
+  width: 100%;
+  height: fit-content;
+}
+
+.info-char{
+  display: flex;
+}

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import colors from '../colors.json'
 
 const PokemonCard = ({url}) => {
 
@@ -10,171 +11,50 @@ const PokemonCard = ({url}) => {
     axios.get(url).then((res) => setPokemon(res.data))
   },[])
 
-  console.log(pokemon)
 // -----------------Border color------------------------------------------------------------------------------
-  /* const type = pokemon.types?.[0].type.name;
+  const getBackground = ()=>{
+    const background = colors.filter((e)=>{
+      return e.type === pokemon.types?.[0].type.name
+    })
+    return background[0]?.background
+  }
 
-  const ChangeBorder = ()=> {
-    if (type===)
-  } */
+  const getBorder = ()=>{
+    const border = colors.filter((e)=>{
+      return e.type === pokemon.types?.[0].type.name
+    })
+    return border[0]?.border
+  }
 
-  /* switch (type) {
-    case 'grass':
-      return(
-        <Link to={`/pokedex/${pokemon.id}`}>
-        <div className='card' style={{border:'2px solid #b4dbb8'}}>
-       <div>
-          <h1>{pokemon.name}</h1>
-          <img src={pokemon.sprites?.other["official-artwork"].front_default} alt="" />
-          <h3>{pokemon.types?.[0].type.name} {pokemon.types?.[1]?.type.name}</h3>
-          <p>Type</p>
-        </div>
-        <div>
-          <p>HP</p> 
-          <h3>{pokemon.stats?.[0].base_stat}</h3>
-          <p>Attack</p>
-          <h3>{pokemon.stats?.[1].base_stat}</h3>
-        </div>
-        <div>
-          <p>Defense</p> 
-          <h3>{pokemon.stats?.[2].base_stat}</h3>
-          <p>Speed</p>
-          <h3>{pokemon.stats?.[5].base_stat}</h3>
-        </div> 
-      </div> 
-      </Link>
-      )
-      break;
-    case 'normal':
-      return(
-        <Link to={`/pokedex/${pokemon.id}`}>
-          <div className='card' style={{border:'2px solid #905e69'}}>
-           <div>
-            <h1>{pokemon.name}</h1>
-            <img src={pokemon.sprites?.other["official-artwork"].front_default} alt="" />
-            <h3>{pokemon.types?.[0].type.name} {pokemon.types?.[1]?.type.name}</h3>
-            <p>Type</p>
-          </div>
-          <div>
-            <p>HP</p> 
-            <h3>{pokemon.stats?.[0].base_stat}</h3>
-            <p>Attack</p>
-            <h3>{pokemon.stats?.[1].base_stat}</h3>
-          </div>
-          <div>
-            <p>Defense</p> 
-            <h3>{pokemon.stats?.[2].base_stat}</h3>
-            <p>Speed</p>
-            <h3>{pokemon.stats?.[5].base_stat}</h3>
-          </div> 
-        </div> 
-      </Link>
-      )
-      break;
-    case 'fighting':
-      return(
-        <Link to={`/pokedex/${pokemon.id}`}>
-          <div className='card' style={{border:'2px solid #bb4c2f'}}>
-           <div>
-            <h1>{pokemon.name}</h1>
-            <img src={pokemon.sprites?.other["official-artwork"].front_default} alt="" />
-            <h3>{pokemon.types?.[0].type.name} {pokemon.types?.[1]?.type.name}</h3>
-            <p>Type</p>
-          </div>
-          <div>
-            <p>HP</p> 
-            <h3>{pokemon.stats?.[0].base_stat}</h3>
-            <p>Attack</p>
-            <h3>{pokemon.stats?.[1].base_stat}</h3>
-          </div>
-          <div>
-            <p>Defense</p> 
-            <h3>{pokemon.stats?.[2].base_stat}</h3>
-            <p>Speed</p>
-            <h3>{pokemon.stats?.[5].base_stat}</h3>
-          </div> 
-        </div> 
-      </Link>
-      )
-      break;
-    case 'flying':
-      console.log('flying')
-      break;
-    case 'poison':
-      console.log('poison')
-      break;
-    case 'ground':
-      console.log('ground')
-      break;
-    case 'rock':
-      console.log('rock')
-      break;
-    case 'bug':
-      console.log('bug')
-      break;
-    case 'ghost':
-      console.log('ghost')
-      break;
-    case 'steel':
-      console.log('steel')
-      break;
-    case 'fire':
-      return (
-        <div></div>
-      )
-      break;
-    case 'water':
-     console.log('water')
-      break;
-    case 'electric':
-      console.log('electric')
-      break;
-    case 'psychic':
-      console.log('psychic')
-      break;
-    case 'ice':
-      console.log('ice')
-      break;
-    case 'dragon':
-      console.log('dragon')
-      break;
-    case 'dark':
-      console.log('dark')
-      break;
-    case 'fairy':
-      console.log('fairy')
-      break;
-    case 'unknown':
-      console.log('unknown')
-      break;
-    case 'shadow':
-      console.log('shadow')
-      break;
-    } */
+  const navigate = useNavigate();
+
+  const goDetail = (id)=> {
+    navigate(`/pokedex/${id}`)
+  }
 
   return (
-    <Link to={`/pokedex/${pokemon.id}`}>
-      <div className='card'>
-       <div>
-          <img src={pokemon.sprites?.other["official-artwork"].front_default} alt="" />
-          <h1>{pokemon.name}</h1>
-          <h3>{pokemon.types?.[0].type.name} {pokemon.types?.[1]?.type.name}</h3>
-          <p>Type</p>
+    <div onClick={()=> goDetail(pokemon.id)}>
+      <div className='card' style={{background:getBackground(), border: `8px solid ${getBorder()}`}}>
+        <img src={pokemon.sprites?.other["official-artwork"].front_default} alt="" />
+        <div className='info'>
+          <div>
+            <h3 style={{fontSize:'25px'}}>{pokemon.name}</h3>
+            <h3 style={{fontSize:'14px'}}>{pokemon.types?.[0].type.name} {pokemon.types?.[1]?.type.name}</h3>
+            <p style={{fontSize:'10px'}}>Type</p>
+          </div>
+          <div className='info-char'>
+            <p><b>HP: </b><span style={{color: getBorder()}}>{pokemon.stats?.[0].base_stat}</span></p> 
+            {/* <h3>{pokemon.stats?.[0].base_stat}</h3> */}
+            <p><b>Attack: </b><span style={{color: getBorder()}}>{pokemon.stats?.[1].base_stat}</span></p>
+            {/* <h3>{pokemon.stats?.[1].base_stat}</h3> */}
+            <p><b>Defense: </b><span style={{color: getBorder()}}>{pokemon.stats?.[2].base_stat}</span></p> 
+            {/* <h3>{pokemon.stats?.[2].base_stat}</h3> */}
+            <p><b>Speed: </b><span style={{color: getBorder()}}>{pokemon.stats?.[5].base_stat}</span></p>
+            {/* <h3>{pokemon.stats?.[5].base_stat}</h3> */}
+          </div>
         </div>
-        <div>
-          <p>HP</p> 
-          <h3>{pokemon.stats?.[0].base_stat}</h3>
-          <p>Attack</p>
-          <h3>{pokemon.stats?.[1].base_stat}</h3>
-        </div>
-        <div>
-          <p>Defense</p> 
-          <h3>{pokemon.stats?.[2].base_stat}</h3>
-          <p>Speed</p>
-          <h3>{pokemon.stats?.[5].base_stat}</h3>
-        </div> 
       </div>  
-    </Link>
+    </div>
   );
 };
 
