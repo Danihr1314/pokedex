@@ -50,7 +50,7 @@ const PokemonDetail = () => {
               <h3>Abilities</h3>
               <div className='abilities'>
                 <p>{pokemon.abilities?.[0].ability.name}</p>
-                <p>{pokemon.abilities?.[1].ability.name}</p>
+                <p>{pokemon.abilities?.[1]?.ability.name}</p>
               </div>
             </div>
           </div>

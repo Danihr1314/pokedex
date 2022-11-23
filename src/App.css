@@ -394,3 +394,119 @@ line-height: 30px;
   justify-content: center;
   align-items: center;
 }
+
+
+
+@media (max-width:768px){
+  .input-name img{
+    width: 70%;
+    height: auto;
+    left: 389px;
+    top: 256px;
+  }
+
+  .input-name h1{
+    font-size: 30px;
+    margin-top: 40px;
+  }
+  
+  .input-name h3{
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  .input-name input{
+    width: 200px;
+  }
+  
+  .input-name button{
+    width: 60px;
+  }
+/* Pokedex-------------------------------------------------------------------------------------------------- */
+  .circle1{
+    width: 77px;
+    height: 77px;
+    left: 270px;
+    top: 58px;
+  }
+
+  .circle2{
+    width: 33px;
+    height: 33px;
+    left: 292px;
+    top: 81px;
+  }
+
+  #image-title{
+    width: 200px;
+    margin: 20px 0 0 10px;
+  }
+
+  #welcome{
+    margin-left: 10px;
+    margin-top: 30px;
+    font-size: 18px;
+  }
+  
+
+  .search-pokemon input{
+    width: 200px;
+    height: 30px;
+  }
+
+  .inputs-pokedex button{
+    width: 70px;
+    height: 35px;
+  }
+
+  .pokemons-page input{
+    width: 50%;
+    height: 30px;
+  }
+  
+  .pokemons-page button{
+    width: 70px;
+    height: 35px;
+  }
+  
+  .inputs-pokedex select{
+    margin-left: 70px;
+    width: 150px;
+    height: 30px;
+    margin-top: 10px;
+  }
+  
+  /* Pokemon detail -----------------------------------------------------------------------------------*/
+
+  .poke-detail img{
+    width: 200px;
+    height: auto;
+  }
+  
+  .pokemon{
+    width: 85%;
+    margin-left: 30px;
+  }
+
+  .types{
+    width: 80px;
+  }
+
+  .abilities{
+    width: 80px;
+  }
+
+  .progress-bar{
+    margin: 0;
+  }
+
+  .second-details h2{
+    margin-top: 0;
+  }
+
+  .poke-moves div{
+    width: 100px;
+    font-size: 13px;
+    height: 44px;
+  }
+}
