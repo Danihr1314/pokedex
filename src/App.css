@@ -488,8 +488,16 @@ line-height: 30px;
     margin-left: 30px;
   }
 
+  .title h1{
+    margin: 0;
+  }
+
   .types{
     width: 80px;
+  }
+
+  .type-abilities h3{
+    margin: 0;
   }
 
   .abilities{
