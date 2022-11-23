@@ -62,6 +62,15 @@ line-height: 30px;
   left: 841.79px;
   top: 595px;
   background: #D93F3F;
+  cursor: pointer;
+  letter-spacing: 2px;
+  overflow: hidden;
+  transition: .3s;
+  }
+
+  .input-name button:hover{
+    color: #FFFFFF;
+    box-shadow: 0 5px 5px rgba(128, 128, 128, 0.418);
   }
 
 /* -----------------pokedex----------------------------------------------------------------------- */

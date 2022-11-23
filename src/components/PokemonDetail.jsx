@@ -17,38 +17,11 @@ const PokemonDetail = () => {
   },[])
 
   console.log(pokemon)
-
-  const getBackground = ()=>{
-    const background = colors.filter((e)=>{
-      return e.type === pokemon.types?.[0].type.name
-    })
-    return background[0]?.background
-  }
-
-  const type = [pokemon.types]
-  const types = ()=>{
-    for (let i=0; i <= type.length; i+1){
-      if (i===2){
-        return(
-          <div>
-            <p>{pokemon.types?.[0].type.name}</p>
-            <p>{pokemon.types?.[1].type.name}</p>
-          </div>
-        )
-      }else{
-        return(
-          <div>
-            <p>{pokemon.types?.[0].type.name}</p>
-          </div>
-        )
-      }
-    }
-  }
-
+  
   return (
     <div className='poke-detail'>
       <NavBar/>
-      <div style={{backgroundColor: getBackground()}}>
+      <div>
         <img id='image-title' src={image} alt="" />
         <img src={pokemon.sprites?.other["official-artwork"].front_default} alt="" />
         <h3># {pokemon.id}</h3>
@@ -57,8 +30,39 @@ const PokemonDetail = () => {
         <p><span>Height: </span>{pokemon.height}</p>
         <h3>Type</h3>
         <p>
-          {types()}
+          <div>
+            <p>{pokemon.types?.[0].type.name}</p>
+            <p>{pokemon.types?.[1]?.type.name ? pokemon.types?.[1]?.type.name : ''}</p>
+          </div>
         </p>
+        <h2>Stats</h2>
+        <label htmlFor="HP">HP</label>
+        <progress 
+          id='HP'
+          value={pokemon.stats?.[0].base_stat} 
+          max='150'>
+        </progress>
+        <label htmlFor="attack">Attack</label>
+        <progress 
+          id='attack'
+          value={pokemon.stats?.[1].base_stat} 
+          max='150'>
+        </progress>
+        <label htmlFor="defense">Defense</label>
+        <progress 
+          id='defense'
+          value={pokemon.stats?.[2].base_stat} 
+          max='150'>
+        </progress>
+        <label htmlFor="speed">Speed</label>
+        <progress 
+          id='speed'
+          value={pokemon.stats?.[5].base_stat} 
+          max='150'>
+        </progress>
+      </div>
+      <div>
+        {}
       </div>
     </div>
   );
