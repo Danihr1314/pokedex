@@ -105,16 +105,16 @@ const Pokedex = () => {
           className='prev'
           onClick={()=> setPage(page-1)} 
           disabled={page === 1}
-        >Prev
+        ><i className="fa-solid fa-backward"></i>
         </button>
-        {numbers.map(number=> (
-          <button key={number} onClick={()=> setPage(number)}>{number}</button>
+        {numbers.slice(0,7).map(number=> (
+          <button style={{backgroundColor: '#E5E5E5', color: '#000000'}} key={number} onClick={()=> setPage(number)}>{number}</button>
         ))}
         <button
           className='next'
           onClick={()=> setPage(page+1)} 
           disabled={page === totalPages}
-        >Next
+        ><i className="fa-solid fa-forward"></i>
         </button>
       </div>
     </div>
